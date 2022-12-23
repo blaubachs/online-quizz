@@ -4,12 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
+    <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Music Quiz Game</title>
 </head>
 <body>
-    
+    <header>
+        <h1>Quiz Game</h1>
+        <ul class="header-list">
+            <li id="highscore-display">High Scores</li>
+            <li id="time-remaining">Time Remaining:</li>
+        </ul>
+    </header>
+    <main>
+        <div class="question-zone main-flex-item" id="">
+            <h2>Question #</h2>
+            <p id="question-content">Question here</p>
+            <div id="highscore-initials">
+                <label for="Initials">Initials:</label>
+                <input type="text" id="initials" name="Initials" placeholder="Initials here.">
+                <button id="submit-highschores" type="submit">Submit!</button>
+            </div id="highscore-initials">
+        </div>
+        <div class="answer-zone main-flex-item" id="">
+                <ul id="answer-grid">
+                    <li class="answer-items"id="answer1">1</li>
+                    <li class="answer-items"id="answer2">2</li>
+                    <li class="answer-items"id="answer3">3</li>
+                    <li class="answer-items"id="answer4">4</li>
+                    <li id="startBtn"><button type="button">Start!</button></li>
+                </ul>
+        </div>
+    </main>
+    <footer>
+        <h3 id="madeBy"></h3>
+    </footer>
 </body>
 
 <script src="./assets/js/script.js"></script>

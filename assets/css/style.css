@@ -1,0 +1,157 @@
+:root {
+    --flame: hsla(17, 64%, 52%, 1);
+    --metallic-sunburst: hsla(39, 36%, 49%, 1);
+    --bud-green: hsla(101, 31%, 55%, 1);
+    --olivine: hsla(81, 35%, 68%, 1);
+    --lemon-meringue: hsla(51, 58%, 82%, 1);
+    --gold-crayola: hsla(37, 67%, 74%, 1);
+    --fawn: hsla(31, 72%, 65%, 1);
+    --coffee: hsla(29, 33%, 34%, 1);
+    --rich-black-fogra-39: hsla(240, 69%, 3%, 1);
+}
+
+* {
+    background-color: var(--rich-black-fogra-39);
+    font-family:'Crimson Text',sans-serif;
+}
+
+main {
+    padding-top:2px;
+    padding-bottom:2px;
+    padding-left:80px;
+    padding-right:80px;
+    height:70vh;
+    border:3px solid chartreuse;
+    display:flex;
+    flex-direction:column;
+}
+
+header {
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    height: 10vh;
+    margin-bottom:3vh;
+    margin-top:1vh;
+    min-height:50px;
+    background-color: var(--metallic-sunburst)
+}
+
+h1, h2, h3, p, li, a, label {
+    background:none;
+    margin:0;
+    color:var(--lemon-meringue);
+}
+
+header h1 {
+    padding-left:10px;
+}
+
+button {
+    background-color: var(--lemon-meringue);
+}
+
+footer {
+    height:10vh;
+    min-height:50px;
+    margin-top:2vh;
+    margin-bottom:0;
+    border:1px solid white;
+}
+
+.header-list {
+    list-style:none;
+    background:none;
+}
+
+.header-list li {
+    display:inline;
+    padding-right:10px;
+    background:none;
+}
+
+#highscore-initials {
+    display:flex;
+    flex-wrap:wrap;
+    flex-direction:row;
+}
+
+#initials {
+    width:45%;
+}
+
+
+.main-flex-item {
+    margin:1%,15%1%,15%;
+}
+
+.question-zone {
+    padding: 5px;
+    border: 1px solid white;
+    height:35%;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-around;
+}
+
+#answer1 {
+    grid-area:answer1;
+}
+
+#answer2 {
+    grid-area:answer2;
+}
+
+#answer3 {
+    grid-area:answer3;
+}
+
+#answer4 {
+    grid-area:answer4;
+}
+
+#startBtn {
+    grid-area:startBtn;
+}
+
+#startBtn button {
+    height:100%;
+    width:100%;
+    /* display:none; */
+}
+
+#answer-grid {
+    height:100%;
+    padding:0;
+    margin:0;
+    display:grid;
+    gap:10px;
+    grid-template: 
+    "answer1 answer2" 
+    "answer3 answer4" 
+    "startBtn startBtn" ;
+}
+
+.answer-zone {
+    padding:5px;
+    border: 1px solid blue;
+    height:65%;
+}
+
+.answer-items {
+    border:1px solid white;
+    width:100%;
+    display: flex;
+    align-items: center;
+}
+
+@media screen and (max-width:480px) {
+    #answer-grid {
+        display:flex;
+        flex-direction:column;
+    }
+    #answer-grid li {
+        height:25%;
+    }
+}
