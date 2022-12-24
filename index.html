@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/css/reset.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <title>Music Quiz Game</title>
+    <title>Quiz Game</title>
   </head>
 
   <body>
     <header>
       <h1>Quiz Game</h1>
       <ul class="header-list">
-        <li><a id="highscore-display" href="#">High Scores</a></li>
+        <li><a id="highscore-display" href="./assets/html/highscores.html">High Scores</a></li>
         <li id="time-remaining">
           Time Remaining:<span id="timeCountdown"></span>
         </li>
@@ -21,9 +21,9 @@
     </header>
     <main>
       <div class="question-zone main-flex-item" id="">
-        <h2 id="question-number">Question #</h2>
+        <h2 id="question-number">Question #<span id="numberText"></span></h2>
         <p id="question-content">Question here</p>
-        <div id="highscore-initials">
+        <!-- <div id="highscore-initials">
           <label for="Initials">Initials:</label>
           <input
             type="text"
@@ -40,7 +40,7 @@
           >
             Submit!
           </button>
-        </div>
+        </div> -->
       </div>
       <div class="answer-zone main-flex-item" id="">
         <ul id="answer-grid">
@@ -48,25 +48,22 @@
             class="answer-items"
             id="answer1"
           >
-            1
+            
           </li>
           <li
             class="answer-items"
             id="answer2"
           >
-            2
+            
           </li>
-          <li class="answer-items" id="answer3">3</li>
-          <li class="answer-items" id="answer4">4</li>
-          <li
+          <li class="answer-items" id="answer3"></li>
+          <li class="answer-items" id="answer4"></li>
+          <div
             class="answer-items"
-            id="startBtn"
-            data-state="show"
-            data-hide="hide"
-            data-show="show"
+            id="startBtn-li"
           >
-            <button type="button">Start!</button>
-          </li>
+            <button id="startBtn" data-state="show" type="button">Start!</button>
+          </div>
         </ul>
       </div>
     </main>

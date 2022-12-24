@@ -1,43 +1,21 @@
-// global vars we might need
-// let questions = ['how many beans should i eat today?', 'what are one of the best things ever']
-// let answers = [[1,2,3,4],["cheese","potatoes"]]
-// let correct = ["literal answer or the index position of correct answers"]
-//html
-    //we can make extra html documents to use
+let questionObject = {
+    questions: ['how many beans should i eat today?', 'what are one of the best things ever'],
+    answerQ1:["1 bean","2 beans","3 beans","4 beans"],
+    answerCorrect1:"2 beans",
+    answerQ2:["cheese","my cat","potatoes","beans"],
+    answerCorrect2:"my cat"
+}
 
-//style
-    //need to display the page
-        //need to show the question
-        //need to show the 4 boxes for answers
-        //need the questions and answers to fall in their respective box
-    //try to make it look clean
-
-//javascript
-
-//we need to grab some items for javascript:
-
-let timerCountdown = document.querySelector("#timeCountdown")
-
-//we need time-remaining to make a timer
-    //example:
-        // function setTime() {
-        //     // Sets interval in variable
-        //     var timerInterval = setInterval(function() {
-        //       secondsLeft--;
-        //       timeEl.textContent = secondsLeft + " seconds left till colorsplosion.";
-          
-        //       if(secondsLeft === 0) {
-        //         // Stops execution of action at set interval
-        //         clearInterval(timerInterval);
-        //         // Calls function to create and append image
-        //         sendMessage();
-        //       }
-          
-        //     }, 1000);
-        //   }
+let chosenAnswer
+let timerCountdown = document.querySelector("#timeCountdown");
+let showHighScores = document.querySelector("#highscore-display");
+let questionNumber = document.querySelector("#numberText");
+let questionContent = document.querySelector("#question-content");
+let answerItemsContainer = document.querySelector("#answer-grid");
+let startBtn = document.querySelector("#startBtn");
+startBtn.addEventListener("click", hideButton);
 
 function scoreTimer() {
-    // defines the number we are going to iterate on
     var secondsLeft = 120;
 
     var interval = setInterval(function() {
@@ -50,17 +28,39 @@ function scoreTimer() {
 
 }
 
+function startQuiz() {
+answerItemsContainer.addEventListener("click", function(event){
 
+    if (event.target.nodeName === "LI"){
+
+        if (chosenAnswer===questionObject.answerCorrect1) {
+            alert("correct")
+        } else {
+            alert("idk")
+        }
+
+}
+})
+
+    let qCounter=0
+
+    questionNumber.textContent= qCounter+1
+
+    questionContent.textContent= questionObject.questions[0]
+
+    for (i=0; i<4; i++) {
+    answerItemsContainer.children[i].textContent=questionObject.answerQ1[i]
+    }
+
+}
 
 //we need highscore-display to make the high score section appear
     //we can do this by either having another .html page, or we can create/append within our divs we have grabbed to make these appear, we can also basically have our whole page load off js, and elements that we remove we should have re-appear when we play again. 
-        // TODO:
-            // removing an element example
-            // const element = document.getElementById("demo");
-            // element.remove();
-            // element.removeChild();
+         // removing an element example
+         // const element = document.getElementById("demo");
+         // element.remove();
+         // element.removeChild();
 
-let showHighScores = document.querySelector("#highscore-display");
 
 // showHighScores.addEventListener("click", clickme);
 
@@ -69,49 +69,45 @@ function clickme(inputArea) {
     console.log("I have been clicked at "+ here);
 }
 
-//we need to question-number so that we can change the text content to the proper question
-    //similarly to above, except we should probably change the textContent based on the question in the array that is picked.
+function hideButton() {
+    let state=startBtn.getAttribute("data-state");
 
-    //connected proper element and checked via adding event listener and using the clickme function
+    if (state==="show") {
+        startBtn.dataset.state="hide"
+        startBtn.setAttribute("style", "display:none;")
+        startBtn.setAttribute("data-set", "hide")
+        // scoreTimer()
+        startQuiz();
+    } else {
+        showButton()
+    }
 
-    let questionNumber = document.querySelector("#question-number");
-
-let questionContent = document.querySelector("#question-content");
-
-//we need to querySelectorAll the class answer-items for event delegation
-    //look at student/instructor demos for examples of this, it will allow us to return things based on a box clicked without writing 4 separate functions for each selected element.
-            // example:
-            // var pTags = document.querySelectorAll("p");
-            // pTags[0].setAttribute("style", "font-size: 40px;");
-let answerItemsContainer = document.querySelector("#answer-grid")
-console.log('answerItemsContainer: ', answerItemsContainer);
-
-function checkState() {
-    let state=element.getAttribute("data-state");
-
-    if (state===""){}
 }
 
-answerItemsContainer.addEventListener("click", function(event) {
+function showButton() {    
+    startBtn.setAttribute("data-set", "show");
+    startBtn.dataset.state="show";
+    startBtn.setAttribute("style", "display:block;");
+}
+
+function clickAnswer(event){
 
     let element=event.target;
-    let state=element.getAttribute("data-state")
 
-    // Verifying that we are within the correct elements when we click them, and can call a function based on the area clicked.
     if (element.matches("#answer1")) {
-        clickme('answer1');
+        chosenAnswer=element.textContent;
     } else if (element.matches("#answer2")) {
-        clickme('answer2');
+        chosenAnswer=element.textContent;
     } else if (element.matches('#answer3')) {
-        clickme('answer3')
+        chosenAnswer=element.textContent;
     } else if (element.matches('#answer4')) {
-        clickme('answer4')
-    } else if (element.matches('button')) {
-        clickme('startBtn')
+        chosenAnswer=element.textContent;
     } else {
-        clickme('areaBetween')
+
     }
-})
+}
+
+answerItemsContainer.addEventListener("click", clickAnswer);
 
         //function
         //init first question

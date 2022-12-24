@@ -142,11 +142,11 @@ footer {
     grid-area:answer4;
 }
 
-#startBtn {
+#startBtn-li {
     grid-area:startBtn;
 }
 
-#startBtn button {
+#startBtn {
     height:100%;
     width:100%;
     font-size:115%;
@@ -176,6 +176,16 @@ footer {
     width:100%;
     display: flex;
     align-items: center;
+}
+
+#highscore-list {
+    display:flex;
+    flex-direction:column;
+}
+
+.highscore-items {
+    padding:5px;
+    border: 1px solid white;
 }
 
 @media screen and (max-width:480px) {

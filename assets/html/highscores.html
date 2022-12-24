@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/reset.css" />
+    <link rel="stylesheet" href="../css/style.css" />
+    <title>Quiz Game: High Scores</title>
+  </head>
+
+  <body>
+    <header>
+      <h1>Quiz Game</h1>
+      <ul class="header-list">
+        <li><a id="highscore-display" href="/online-quizz/index.html">Main Page</a></li>
+        <li id="time-remaining">
+          Time Remaining:<span id="timeCountdown"></span>
+        </li>
+      </ul>
+    </header>
+    <main>
+        <div class="question-zone main-flex-item" id="">
+          <h2 id="question-number">High Scores</h2>
+          <p id="question-content">Input your initials in the box below and click submit to be put on the leaderboard.</p>
+          <div id="highscore-initials">
+            <label for="Initials">Initials:</label>
+            <input
+              type="text"
+              id="initials"
+              name="Initials"
+              placeholder="Initials here."
+            />
+            <button
+              id="submit-highscores"
+              type="submit"
+              data-state="show"
+              data-hide="hide"
+              data-show="show"
+            >
+              Submit!
+            </button>
+          </div>
+        </div>
+        <div class="answer-zone main-flex-item" id="">
+          <ol id="highscore-list">
+            <li
+              class="highscore-items"
+            >
+              Placeholder highscore 1
+            </li>
+          </ol>
+        </div>
+      </main>
+      <footer>
+        <h3 id="madeBy">Made by Ben Laubach</h3>
+      </footer>
+    </body>
+  
+    <script src="../js/highscores.js"></script>
+  </html>
+  
