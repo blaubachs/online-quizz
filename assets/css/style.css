@@ -33,7 +33,6 @@ header {
     justify-content:space-between;
     height: 10vh;
     margin-bottom:3vh;
-    margin-top:1vh;
     min-height:50px;
     background-color: var(--metallic-sunburst)
 }
@@ -52,12 +51,22 @@ button {
     background-color: var(--lemon-meringue);
 }
 
+input {
+    color:var(--lemon-meringue);
+    margin-left:5px;
+    margin-right:5px;
+}
+
 footer {
     height:10vh;
     min-height:50px;
     margin-top:2vh;
     margin-bottom:0;
     border:1px solid white;
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    background-color: var(--metallic-sunburst)
 }
 
 .header-list {
@@ -75,6 +84,28 @@ footer {
     display:flex;
     flex-wrap:wrap;
     flex-direction:row;
+    align-items:center;
+    height:70px;
+}
+
+#submit-highscores {
+    height:30px;
+    width:70px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    transition: all 100ms ease-out;
+}
+
+#submit-highscores:hover {
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 0px;
+    box-shadow: 2px 2px 5px var(--coffee)
+}
+
+#timeCountdown {
+    background:none;
+    font-style: italic;
+    text-shadow:2px 2px 5px var(--rich-black-fogra-39);
 }
 
 #initials {
@@ -118,6 +149,7 @@ footer {
 #startBtn button {
     height:100%;
     width:100%;
+    font-size:115%;
     /* display:none; */
 }
 
@@ -126,7 +158,7 @@ footer {
     padding:0;
     margin:0;
     display:grid;
-    gap:10px;
+    gap:20px;
     grid-template: 
     "answer1 answer2" 
     "answer3 answer4" 
@@ -134,7 +166,7 @@ footer {
 }
 
 .answer-zone {
-    padding:5px;
+    padding:20px;
     border: 1px solid blue;
     height:65%;
 }
