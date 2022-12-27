@@ -1,11 +1,10 @@
 let questionObject = {
     questions: ['how many beans should i eat today?', 'what are one of the best things ever'],
-    answerQ1:["1 bean","2 beans","3 beans","4 beans"],
-    answerCorrect1:"2 beans",
-    answerQ2:["cheese","my cat","potatoes","beans"],
-    answerCorrect2:"my cat"
+    answerQ:[["1 bean","2 beans","3 beans","4 beans"],["cheese","my cat","potatoes","beans"]],
+    answerCorrect:["2 beans", "my cat"],
 }
 
+let correctCounter=false;
 let chosenAnswer
 let timerCountdown = document.querySelector("#timeCountdown");
 let showHighScores = document.querySelector("#highscore-display");
@@ -13,6 +12,7 @@ let questionNumber = document.querySelector("#numberText");
 let questionContent = document.querySelector("#question-content");
 let answerItemsContainer = document.querySelector("#answer-grid");
 let startBtn = document.querySelector("#startBtn");
+let a
 startBtn.addEventListener("click", hideButton);
 
 function scoreTimer() {
@@ -22,7 +22,7 @@ function scoreTimer() {
         secondsLeft--; 
         timerCountdown.textContent= ' ' +secondsLeft + ' seconds remaining!'
         if(secondsLeft===0) {
-            clearInterval(interval);
+        clearInterval(interval);
         }
     }, 1000);
 
@@ -33,12 +33,30 @@ answerItemsContainer.addEventListener("click", function(event){
 
     if (event.target.nodeName === "LI"){
 
-        if (chosenAnswer===questionObject.answerCorrect1) {
-            alert("correct")
+        if (chosenAnswer===questionObject.answerCorrect[qCounter]) {
+            correctCounter=true;
+            qCounter++
+            console.log('qCounter++: ', qCounter);
+            nextQuestion(qCounter);
+            console.log("truth")
         } else {
-            alert("idk")
+            console.log("wrONG")
         }
 
+        function nextQuestion(a) {
+
+            console.log(a)
+        
+            questionNumber.textContent= a+1
+            console.log('questionNumber.textContent= a+1: ', questionNumber.textContent= a+1);
+        
+            questionContent.textContent= questionObject.questions[a]
+            console.log('questionContent.textContent= questionObject.questions[a]: ', questionContent.textContent= questionObject.questions[a]);
+        
+            for (i=0; i<4; i++) {
+            answerItemsContainer.children[i].textContent=questionObject.answerQ[a][i]
+            }
+        }
 }
 })
 
@@ -49,7 +67,7 @@ answerItemsContainer.addEventListener("click", function(event){
     questionContent.textContent= questionObject.questions[0]
 
     for (i=0; i<4; i++) {
-    answerItemsContainer.children[i].textContent=questionObject.answerQ1[i]
+    answerItemsContainer.children[i].textContent=questionObject.answerQ[qCounter][i]
     }
 
 }
@@ -76,7 +94,7 @@ function hideButton() {
         startBtn.dataset.state="hide"
         startBtn.setAttribute("style", "display:none;")
         startBtn.setAttribute("data-set", "hide")
-        // scoreTimer()
+        scoreTimer()
         startQuiz();
     } else {
         showButton()
