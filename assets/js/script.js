@@ -40,6 +40,11 @@ answerItemsContainer.addEventListener("click", function(event){
             nextQuestion(qCounter);
             console.log("truth")
         } else {
+            alert("The correct answer is: " + questionObject.answerCorrect[qCounter]);
+            qCounter++
+            console.log('qCounter++: ', qCounter);
+            nextQuestion(qCounter);
+            wrongAnswer(questionObject.answerCorrect[qCounter]);
             console.log("wrONG")
         }
 
