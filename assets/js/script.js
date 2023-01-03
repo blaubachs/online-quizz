@@ -1,7 +1,7 @@
 let questionObject = {
-    questions: ['how many beans should i eat today?', 'what are one of the best things ever'],
-    answerQ:[["1 bean","2 beans","3 beans","4 beans"],["cheese","my cat","potatoes","beans"]],
-    answerCorrect:["2 beans", "my cat"],
+    questions: ['Which of the following is NOT a data type in JavaScript?', 'What can we use to define font types in CSS on a webpage?'],
+    answerQ:[["String","Boolean","Redefined","Null"],["font-style","text-decoration","text-rendering","font-family"]],
+    answerCorrect:["Redefined", "font-family"],
 }
 
 let correctCounter=false;
@@ -13,16 +13,19 @@ let questionContent = document.querySelector("#question-content");
 let answerItemsContainer = document.querySelector("#answer-grid");
 let startBtn = document.querySelector("#startBtn");
 let a
+let secondsLeft = 120;
 startBtn.addEventListener("click", hideButton);
 
 function scoreTimer() {
-    var secondsLeft = 120;
+    // let secondsLeft = 120;
+    timerCountdown.textContent= ' ' +secondsLeft + ' seconds remaining!'
 
     var interval = setInterval(function() {
         secondsLeft--; 
         timerCountdown.textContent= ' ' +secondsLeft + ' seconds remaining!'
-        if(secondsLeft===0) {
+        if(secondsLeft<=0) {
         clearInterval(interval);
+        location.replace("./assets/html/highscores.html")
         }
     }, 1000);
 
@@ -40,11 +43,12 @@ answerItemsContainer.addEventListener("click", function(event){
             nextQuestion(qCounter);
             console.log("truth")
         } else {
+            secondsLeft-=10
             alert("The correct answer is: " + questionObject.answerCorrect[qCounter]);
             qCounter++
             console.log('qCounter++: ', qCounter);
             nextQuestion(qCounter);
-            wrongAnswer(questionObject.answerCorrect[qCounter]);
+            // wrongAnswer(questionObject.answerCorrect[qCounter]);
             console.log("wrONG")
         }
 
