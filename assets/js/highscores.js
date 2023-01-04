@@ -1,0 +1,3 @@
+highScoreObject=
+
+localStorage.getItem(highScoreObject)

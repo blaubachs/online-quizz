@@ -16,7 +16,7 @@ let answerItemsContainer = document.querySelector("#answer-grid");
 let startBtn = document.querySelector("#startBtn");
 let a
 let secondsLeft = 120;
-startBtn.addEventListener("click", hideButton);
+
 
 answerDisplay.textContent= 'If you would like to see high scores, click the link at the top of the page.'
 
@@ -43,14 +43,11 @@ answerItemsContainer.addEventListener("click", function(event){
             correctCounter=true;
             answerDisplay.textContent="Correct! The correct answer was: " + questionObject.answerCorrect[qCounter];
             qCounter++
-            console.log('qCounter++: ', qCounter);
             nextQuestion(qCounter);
-            console.log("truth")
         } else {
             secondsLeft-=10
             answerDisplay.textContent="Incorrect! The correct answer was: " + questionObject.answerCorrect[qCounter];
             qCounter++
-            console.log('qCounter++: ', qCounter);
             nextQuestion(qCounter);
         }
 
@@ -59,10 +56,8 @@ answerItemsContainer.addEventListener("click", function(event){
             console.log(a)
         
             questionNumber.textContent= a+1
-            console.log('questionNumber.textContent= a+1: ', questionNumber.textContent= a+1);
         
             questionContent.textContent= questionObject.questions[a]
-            console.log('questionContent.textContent= questionObject.questions[a]: ', questionContent.textContent= questionObject.questions[a]);
         
             for (i=0; i<4; i++) {
             answerItemsContainer.children[i].textContent=questionObject.answerQ[a][i]
@@ -98,6 +93,7 @@ function clickme(inputArea) {
     console.log("I have been clicked at "+ here);
 }
 
+startBtn.addEventListener("click", hideButton);
 function hideButton() {
     let state=startBtn.getAttribute("data-state");
 
