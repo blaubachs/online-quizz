@@ -1,9 +1,11 @@
 let questionObject = {
-    questions: ['Which of the following is NOT a data type in JavaScript?', 'What can we use to define font types in CSS on a webpage?'],
-    answerQ:[["String","Boolean","Redefined","Null"],["font-style","text-decoration","text-rendering","font-family"]],
-    answerCorrect:["Redefined", "font-family"],
+    questions: 
+    ['Which of the following is NOT a data type in JavaScript?', 'What can we use to define font types in CSS on a webpage?', 'What index position do we need to use to return "3" in the array [1,2,3,4]?','Browsers typically apply some default CSS styling. What is it generally called to remove this?','What is the default position "state" of an item on a page?'],
+    answerQ:[["String","Boolean","Redefined","Null"],["font-style","text-decoration","text-rendering","font-family"],['0','1','2','3'],['CSS reset','Style 0','De-Default','Un-CSS'],["block","inline","flex","static"]],
+    answerCorrect:["Redefined", "font-family","2","CSS reset","static"],
 }
 
+let answerDisplay = document.querySelector("#wrong-answer");
 let correctCounter=false;
 let chosenAnswer
 let timerCountdown = document.querySelector("#timeCountdown");
@@ -16,8 +18,9 @@ let a
 let secondsLeft = 120;
 startBtn.addEventListener("click", hideButton);
 
+answerDisplay.textContent= 'If you would like to see high scores, click the link at the top of the page.'
+
 function scoreTimer() {
-    // let secondsLeft = 120;
     timerCountdown.textContent= ' ' +secondsLeft + ' seconds remaining!'
 
     var interval = setInterval(function() {
@@ -38,18 +41,17 @@ answerItemsContainer.addEventListener("click", function(event){
 
         if (chosenAnswer===questionObject.answerCorrect[qCounter]) {
             correctCounter=true;
+            answerDisplay.textContent="Correct! The correct answer was: " + questionObject.answerCorrect[qCounter];
             qCounter++
             console.log('qCounter++: ', qCounter);
             nextQuestion(qCounter);
             console.log("truth")
         } else {
             secondsLeft-=10
-            alert("The correct answer is: " + questionObject.answerCorrect[qCounter]);
+            answerDisplay.textContent="Incorrect! The correct answer was: " + questionObject.answerCorrect[qCounter];
             qCounter++
             console.log('qCounter++: ', qCounter);
             nextQuestion(qCounter);
-            // wrongAnswer(questionObject.answerCorrect[qCounter]);
-            console.log("wrONG")
         }
 
         function nextQuestion(a) {
@@ -136,19 +138,7 @@ function clickAnswer(event){
 
 answerItemsContainer.addEventListener("click", clickAnswer);
 
-        //function
-        //init first question
-        //start timer
 
-        //function
-        //called when answer selected
-        //checks if the answer is right or wrong
-        //deducts from timer if wrong
-        //prompts that you gave an incorrect answer, indicate to the user the answer was wrong
-        //then load next question (separate function)
-
-        //function
-        //loads next question
 
         //function
         //triggers end of game

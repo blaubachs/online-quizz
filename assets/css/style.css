@@ -21,7 +21,6 @@ main {
     padding-left:80px;
     padding-right:80px;
     height:70vh;
-    border:3px solid chartreuse;
     display:flex;
     flex-direction:column;
 }
@@ -49,6 +48,7 @@ header h1 {
 
 button {
     background-color: var(--lemon-meringue);
+    border-radius:8px;
 }
 
 input {
@@ -62,7 +62,7 @@ footer {
     min-height:50px;
     margin-top:2vh;
     margin-bottom:0;
-    border:1px solid white;
+    border:1px solid var(--rich-black-fogra-39);
     display:flex;
     align-items:center;
     justify-content: center;
@@ -172,11 +172,19 @@ footer {
 }
 
 .answer-items {
-    border:1px solid white;
     width:100%;
     display: flex;
     align-items: center;
     justify-content:center;
+}
+
+#answer1,
+#answer2, 
+#answer3, 
+#answer4 {
+    border:2px solid var(--metallic-sunburst);
+    border-radius:8px;
+    box-shadow:1px 1px 4px var(--coffee)
 }
 
 #highscore-list {
