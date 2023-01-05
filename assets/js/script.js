@@ -26,7 +26,9 @@ let questionContent = document.querySelector("#question-content");
 let answerItemsContainer = document.querySelector("#answer-grid");
 let startBtn = document.querySelector("#startBtn");
 let a;
-let secondsLeft = 120;
+let secondsLeft = 50;
+let qCounter = 0;
+let trueCount = 0;
 
 answerDisplay.textContent =
   "If you would like to see high scores, click the link at the top of the page.";
@@ -53,6 +55,7 @@ function startQuiz() {
           "Correct! The correct answer was: " +
           questionObject.answerCorrect[qCounter];
         qCounter++;
+        checkEndOfGame();
         nextQuestion(qCounter);
       } else {
         secondsLeft -= 10;
@@ -60,6 +63,7 @@ function startQuiz() {
           "Incorrect! The correct answer was: " +
           questionObject.answerCorrect[qCounter];
         qCounter++;
+        checkEndOfGame();
         nextQuestion(qCounter);
       }
 
@@ -78,8 +82,6 @@ function startQuiz() {
     }
   });
 
-  let qCounter = 0;
-
   questionNumber.textContent = qCounter + 1;
 
   questionContent.textContent = questionObject.questions[0];
@@ -89,15 +91,6 @@ function startQuiz() {
       questionObject.answerQ[qCounter][i];
   }
 }
-
-//we need highscore-display to make the high score section appear
-//we can do this by either having another .html page, or we can create/append within our divs we have grabbed to make these appear, we can also basically have our whole page load off js, and elements that we remove we should have re-appear when we play again.
-// removing an element example
-// const element = document.getElementById("demo");
-// element.remove();
-// element.removeChild();
-
-// showHighScores.addEventListener("click", clickme);
 
 function clickme(inputArea) {
   let here = inputArea;
@@ -151,7 +144,11 @@ answerItemsContainer.addEventListener("click", clickAnswer);
 //play again button
 
 function checkEndOfGame() {
-  if (secondsLeft === 0) {
-    localStorage.setItem("score", 0);
+  if (secondsLeft <= 0) {
+    localStorage.setItem("score", secondsLeft);
+    location.replace("./assets/html/highscores.html");
+  } else if (qCounter >= 5) {
+    localStorage.setItem("score", secondsLeft);
+    location.replace("./assets/html/highscores.html");
   }
 }
