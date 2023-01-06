@@ -135,14 +135,6 @@ function clickAnswer(event) {
 
 answerItemsContainer.addEventListener("click", clickAnswer);
 
-//function
-//triggers end of game
-//last question being answered or timer hits 0
-//prompts initials
-//saves high scores
-//shows high scores
-//play again button
-
 function checkEndOfGame() {
   if (secondsLeft <= 0) {
     localStorage.setItem("score", secondsLeft);

@@ -1,11 +1,3 @@
-// EDGE CASES
-// -----------------------------------------------
-// Check if storage works on other computers and browsers for others.
-// Make sure we have no weird edge cases where score<0.
-// Make sure that scores are persistant after refreshing page.
-// -- this does not mean that they need to be in the same order.
-// Make sure proper initials match score.
-
 let submitButton = document.querySelector("#submit-highscores");
 let initialInput = document.querySelector("#initials");
 
