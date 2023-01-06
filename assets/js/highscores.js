@@ -1,10 +1,3 @@
-//we need highscore-display to make the high score section appear
-//we can do this by either having another .html page, or we can create/append within our divs we have grabbed to make these appear, we can also basically have our whole page load off js, and elements that we remove we should have re-appear when we play again.
-// removing an element example
-// const element = document.getElementById("demo");
-// element.remove();
-// element.removeChild();
-
 // EDGE CASES
 // -----------------------------------------------
 // Check if storage works on other computers and browsers for others.
@@ -13,66 +6,75 @@
 // -- this does not mean that they need to be in the same order.
 // Make sure proper initials match score.
 
-let score = localStorage.getItem("score");
 let submitButton = document.querySelector("#submit-highscores");
 let initialInput = document.querySelector("#initials");
-let highscoreArr = [];
 
-// make id's for all list items.. how do we do this?
+let score = localStorage.getItem("score");
 
-function writeToHighScores() {}
+let scoreOl = document.querySelector("#highscore-list");
 
-console.log(score);
+let highScoreArr = [];
 
 if (score < 0) {
   score = 0;
 }
 
-// submitButton.addEventListener("click", writeToHighScores);
 submitButton.addEventListener("click", function (event) {
   event.preventDefault();
 
   let initialsText = initialInput.value.trim();
+  let scoreString = initialsText + " => " + score;
 
   if (initialsText === "") {
-    console.log("returning...");
     return;
   }
 
-  highscoreArr.push(initialsText);
-  highscoreArr.push(score);
+  console.log("highscore array before push" + highScoreArr);
+
+  highScoreArr.push(scoreString);
 
   initialInput.value = "";
 
-  console.log(highscoreArr);
+  console.log("highscore array after push" + highScoreArr);
+
+  storeScores();
+  createList();
 });
 
-console.log(initials);
-console.log(score);
+// create list items
+function createList() {
+  scoreOl.innerHTML = "";
 
-// function submitInitials() {
-//   localStorage.getItem(initials);
+  for (let i = 0; i < highScoreArr.length; i++) {
+    let listText = highScoreArr[i];
+    let createLi = document.createElement("li");
 
-//   let finalScore = [initialsValue, score];
+    createLi.textContent = listText;
+    createLy.setAttribute("style", "list-style:circle;");
 
-//   console.log(initialsValue);
-//   console.log("finalscore" + finalScore);
+    scoreOl.appendChild(createLi);
+  }
+}
 
-//   return finalScore;
-// }
+// initializes at page load
+function init() {
+  let storedScores = JSON.parse(localStorage.getItem("highScoreArr"));
 
-// let pushArr = [];
+  console.log("init has run");
 
-// pushArr += highscoreArr.push(finalScore);
-// console.log(highscoreArr);
+  console.log("storedScores on page load = " + storedScores);
 
-// let scoreOl = document.querySelector("#highscore-list");
-// let scoreLi = document.createElement("li");
+  if (storedScores !== null) {
+    highScoreArr = storedScores;
+  }
 
-// // have to do this in a for loop, probably
-// // might push the array of finalScore to an array to populate li items with
-// scoreLi.setAttribute("class", "highscore-items");
+  // fillList();
+}
 
-// scoreLi.appendChild(document.createTextNode(finalScore.join(" => ")));
-// scoreOl.appendChild(scoreLi);
-// console.log(finalScore);
+// store scores
+function storeScores() {
+  localStorage.setItem("highScoreArr", JSON.stringify(highScoreArr));
+}
+
+// run init to load list items into array
+init();

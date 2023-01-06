@@ -119,7 +119,7 @@ footer {
 
 .question-zone {
     padding: 5px;
-    border: 1px solid white;
+    border: 3px ridge var(--gold-crayola);
     height:35%;
     display:flex;
     flex-direction:column;
@@ -167,7 +167,6 @@ footer {
 
 .answer-zone {
     padding:20px;
-    border: 1px solid blue;
     height:65%;
 }
 
@@ -193,8 +192,9 @@ footer {
 }
 
 .highscore-items {
+    display:flex;
+    justify-content:center;
     padding:5px;
-    border: 1px solid white;
 }
 
 @media screen and (max-width:480px) {
