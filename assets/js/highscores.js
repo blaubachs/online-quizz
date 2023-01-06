@@ -60,7 +60,7 @@ function init() {
     highScoreArr = storedScores;
   }
 
-  // fillList();
+  createList();
 }
 
 // store scores
