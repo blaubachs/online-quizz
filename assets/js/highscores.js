@@ -50,7 +50,7 @@ function createList() {
     let createLi = document.createElement("li");
 
     createLi.textContent = listText;
-    createLy.setAttribute("style", "list-style:circle;");
+    createLi.setAttribute("style", "list-style:circle;");
 
     scoreOl.appendChild(createLi);
   }
