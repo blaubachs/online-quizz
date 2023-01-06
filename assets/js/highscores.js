@@ -13,34 +13,66 @@
 // -- this does not mean that they need to be in the same order.
 // Make sure proper initials match score.
 
-// showHighScores.addEventListener("click", clickme);
-
-// let initialsInput = initials.value;
 let score = localStorage.getItem("score");
 let submitButton = document.querySelector("#submit-highscores");
+let initialInput = document.querySelector("#initials");
 let highscoreArr = [];
 
 // make id's for all list items.. how do we do this?
 
-// function writeToHighScores() {
-//   let initials = document.querySelector("#initials").value;
-//   let finalScore = [initials, score];
-// }
+function writeToHighScores() {}
 
-submitButton.addEventListener("click", writeToHighScores);
+console.log(score);
+
+if (score < 0) {
+  score = 0;
+}
+
+// submitButton.addEventListener("click", writeToHighScores);
+submitButton.addEventListener("click", function (event) {
+  event.preventDefault();
+
+  let initialsText = initialInput.value.trim();
+
+  if (initialsText === "") {
+    console.log("returning...");
+    return;
+  }
+
+  highscoreArr.push(initialsText);
+  highscoreArr.push(score);
+
+  initialInput.value = "";
+
+  console.log(highscoreArr);
+});
 
 console.log(initials);
 console.log(score);
 
-function listOnPageLoad() {
-  let initials = document.querySelector("#initials").value;
-  let finalScore = [initials, score];
-  let scoreOl = document.querySelector("#highscore-list");
-  let scoreLi = document.createElement("li");
+// function submitInitials() {
+//   localStorage.getItem(initials);
 
-  scoreLi.setAttribute("class", "highscore-items");
+//   let finalScore = [initialsValue, score];
 
-  scoreLi.appendChild(document.createTextNode(finalScore.join(" => ")));
-  scoreOl.appendChild(scoreLi);
-  console.log(finalScore);
-}
+//   console.log(initialsValue);
+//   console.log("finalscore" + finalScore);
+
+//   return finalScore;
+// }
+
+// let pushArr = [];
+
+// pushArr += highscoreArr.push(finalScore);
+// console.log(highscoreArr);
+
+// let scoreOl = document.querySelector("#highscore-list");
+// let scoreLi = document.createElement("li");
+
+// // have to do this in a for loop, probably
+// // might push the array of finalScore to an array to populate li items with
+// scoreLi.setAttribute("class", "highscore-items");
+
+// scoreLi.appendChild(document.createTextNode(finalScore.join(" => ")));
+// scoreOl.appendChild(scoreLi);
+// console.log(finalScore);
